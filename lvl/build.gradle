@@ -1,4 +1,21 @@
+plugins {
+    id 'maven-publish'
+}
 apply plugin: 'com.android.library'
+
+def artifactId = 'glicense'
+def groupId = 'com.cliveleehere'
+def version = "1"
+
+publishing {
+    publications {
+        library(MavenPublication) {
+            setGroupId(groupId)
+            setArtifactId(artifactId)
+            setVersion(version)
+        }
+    }
+}
 
 android {
     compileSdkVersion 28
