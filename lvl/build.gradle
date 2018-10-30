@@ -7,12 +7,19 @@ def artifactId = 'glicense'
 def groupId = 'com.cliveleehere'
 def version = "1"
 
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier "sources"
+}
+
 publishing {
     publications {
         library(MavenPublication) {
             setGroupId(groupId)
             setArtifactId(artifactId)
             setVersion(version)
+            artifact(sourceJar)
+            artifact("$buildDir/outputs/aar/lvl-release.aar")
         }
     }
 }
